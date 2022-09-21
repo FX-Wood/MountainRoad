@@ -6,8 +6,8 @@ import { withSnackbar } from 'notistack';
 
 // Pages
 import Splash from './views/Splash';
-import SignupForm from './components/auth/SignupForm';
 import LoginForm from './components/auth/LoginForm';
+import SignupFlow from './views/SignupFlow';
 import Dash from './views/Dash';
 import BrowseMountains from './views/BrowseMountains';
 import RideFlow from './views/RideFlow';
@@ -143,7 +143,7 @@ class App extends Component {
                 render={() => <Splash user={user} />} />
               <Route 
                 path="/signup" 
-                render={() => <SignupForm {...authProps} />} />
+                render={() => <SignupFlow {...authProps} />} />
               <Route 
                 exact path="/login" 
                 render={() => <LoginForm {...authProps}/>} />
@@ -171,7 +171,7 @@ class App extends Component {
             render={() => <Splash user={user} />} />
           <Route 
             path="/signup" 
-            render={() => <SignupForm {...authProps} />} />
+            render={() => <SignupFlow {...authProps} />} />
           <Route 
             path="/login" 
             render={() => <LoginForm {...authProps}/>} />
