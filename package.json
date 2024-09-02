@@ -17,9 +17,6 @@
     "url": "https://github.com/fx-wood/jwt-auth-boilerplate/issues"
   },
   "homepage": "https://github.com/fx-wood/jwt-auth-boilerplate#readme",
-  "engines": {
-    "node": "10.15.3"
-  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.14.0",
