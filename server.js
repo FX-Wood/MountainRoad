@@ -28,12 +28,8 @@ const signupLimiter = new RateLimit({
   }),
 });
 
-if (process.env.NODE_ENV == "production") {
-  app.use(express.static(__dirname + "/client/build"));
-  mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
-} else {
-  mongoose.connect("mongodb://localhost/project4", { useNewUrlParser: true });
-}
+app.use(express.static(__dirname + "/client/build"));
+mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 
 const db = mongoose.connection;
 
@@ -74,7 +70,7 @@ app.get("*", (err, res) => {
   res.send(__dirname + "/client/build/index.html");
 });
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 5000;
 const nodeEnv = process.env.NODE_ENV || "development";
 app.listen(port, () => {
   console.log(
@@ -83,4 +79,3 @@ app.listen(port, () => {
   console.log(`Oh, and the port is`, port);
   console.log(`Node environment: ${nodeEnv}`);
 });
-
