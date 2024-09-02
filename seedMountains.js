@@ -1,3 +1,4 @@
+require("dotenv").config();
 const Mountain = require("./models/mountain");
 const mongoose = require("mongoose");
 const mountains = [
@@ -28,11 +29,7 @@ const mountains = [
   },
 ];
 
-if (process.env.NODE_ENV == "production") {
-  mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
-} else {
-  mongoose.connect("mongodb://localhost/project4", { useNewUrlParser: true });
-}
+mongoose.connect(process.env.MONGODB_URI);
 
 const db = mongoose.connection;
 
