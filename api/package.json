@@ -1,37 +1,9 @@
 {
-  "name": "mountainroad-api",
+  "name": "api",
   "version": "1.0.0",
-  "description": "api for mountainroad react client",
+  "description": "api folder for vercel deployment",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test",
     "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fx-wood/mountainroad.git"
-  },
-  "author": "FX",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fx-wood/mountainroad/issues"
-  },
-  "homepage": "https://github.com/fx-wood/mountainroad#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cloudinary": "^1.14.0",
-    "dotenv": "^7.0.0",
-    "express": "^4.17.1",
-    "express-jwt": "^5.3.1",
-    "express-rate-limit": "^3.5.3",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.13",
-    "morgan": "^1.10.0",
-    "multer": "^1.4.1",
-    "multer-storage-cloudinary": "^2.2.1"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4"
   }
 }
