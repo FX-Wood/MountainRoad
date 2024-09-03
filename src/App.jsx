@@ -93,7 +93,7 @@ class App extends Component {
     } else {
       // If found, send token to be verified
       axios
-        .post("/api/auth/me/from/token", { token })
+        .post("/auth/me/from/token", { token })
         .then((res) => {
           if (res.data.type === "error") {
             console.log(

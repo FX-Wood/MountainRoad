@@ -3,10 +3,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const expressJWT = require("express-jwt");
 const RateLimit = require("express-rate-limit");
-
+const morgan = require("morgan");
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(morgan("combined"));
 
 const loginLimiter = new RateLimit({
   windowMs: 5 * 60 * 1000, // 5 minutes
@@ -28,8 +29,7 @@ const signupLimiter = new RateLimit({
   }),
 });
 
-app.use(express.static(__dirname + "/client/build"));
-mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
+mongoose.connect(process.env.MONGODB_URI);
 
 const db = mongoose.connection;
 
@@ -43,6 +43,9 @@ db.on("error", (err) => {
 app.use("/api/auth/login", loginLimiter);
 app.use("/api/auth/signup", signupLimiter);
 
+app.get("/api/alive", (req, res) =>
+  res.json({ message: "mountainroad api v1" }),
+);
 app.use("/api/auth", require("./routes/auth"));
 app.use(
   "/api/user",
@@ -64,18 +67,4 @@ app.use(
   expressJWT({ secret: process.env.JWT_SECRET }),
   require("./routes/share"),
 );
-
-app.get("*", (err, res) => {
-  console.log("GET *");
-  res.send(__dirname + "/client/build/index.html");
-});
-
-const port = process.env.PORT || 5000;
-const nodeEnv = process.env.NODE_ENV || "development";
-app.listen(port, () => {
-  console.log(
-    `You're listening to the sweet sounds of ${port} mountainroad in the morning...`,
-  );
-  console.log(`Oh, and the port is`, port);
-  console.log(`Node environment: ${nodeEnv}`);
-});
+module.exports = app;

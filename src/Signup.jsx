@@ -26,7 +26,7 @@ export default class Signup extends Component {
     console.log("signing up...");
     e.preventDefault();
     axios
-      .post("api/auth/signup", this.state)
+      .post("auth/signup", this.state)
       .then((res) => {
         console.log("res.data", res.data);
         if (res.data.type === "error") {
